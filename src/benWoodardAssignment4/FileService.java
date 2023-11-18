@@ -6,22 +6,21 @@ import java.io.FileReader;
 public class FileService {
 
 	public Student[] readStudentFile(String filename) {
-		Student[] studentObjectArray = new Student[99];
+		Student[] studentObjectArray = new Student[150];
 		String[] studentStringArray = new String[4];
-		String line;
 
 		try (BufferedReader fileReader = new BufferedReader(new FileReader(filename));) {
 			
 			
 			int i = 0;
+			String line = fileReader.readLine();
 			while ((line = fileReader.readLine()) != null) {
-				line = fileReader.readLine();
 				studentStringArray = line.split(",");
 				studentObjectArray[i] = new Student(studentStringArray);
 				i++;
 			}
 		} catch (Exception e) {
-			System.out.println("There was an exception in reading the file");
+			System.out.println("There was an exception while reading the file.");
 			e.printStackTrace();
 		}
 		return studentObjectArray;

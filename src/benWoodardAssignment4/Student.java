@@ -14,6 +14,10 @@ public class Student implements Comparable<Student> {
 		this.studentName = studentInputArray[1];
 	}
 
+	public String getInfo() {
+		return "Student Id: " + studentId + " Student Name: " + studentName + " Course: " + course + " Grade: " + grade;
+	}
+
 	public String getStudentId() {
 		return studentId;
 	}

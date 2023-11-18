@@ -52,6 +52,7 @@ public class Student implements Comparable<Student> {
 
 	@Override
 	public int compareTo(Student that) {
+
 		if (Integer.parseInt(this.getGrade()) > Integer.parseInt(that.getGrade())) {
 			return -1;
 		} else if (Integer.parseInt(this.getGrade()) < Integer.parseInt(that.getGrade())) {

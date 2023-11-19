@@ -1,7 +1,10 @@
 package benWoodardAssignment4;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -27,7 +30,7 @@ public class FileService {
 		return studentObjectArray;
 	}
 
-	//Organize Student[] by grade in decsending order via the Student comparable
+	// Organize Student[] by grade in decsending order via the Student comparable
 	public Student[] organizeStudentsByGrade(Student[] inputArray) {
 		FileService fileService = new FileService();
 		Student[] studentObjectArray = fileService.readStudentFile("student-master-list.csv");
@@ -41,10 +44,77 @@ public class FileService {
 					return 1;
 				} else if (student2 == null) {
 					return -1;
-				} 
+				}
 				return student1.compareTo(student2);
 			}
 		});
 		return studentObjectArray;
 	}
+
+	// write course1.csv method
+	public void writeCompSciCsv(Student[] inputStudentArray) {
+
+		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course1.csv"))) {
+			fileWriter.write("Student ID, Student Name, Course, Grade\n");
+			for (Student student : inputStudentArray) {
+				if (student == null) {
+					break;
+				} else if ((student.getInfo()).contains("COMPSCI")) {
+					fileWriter.write(student.getInfo() + "\n");
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("IOException writing course1.csv");
+			e.printStackTrace();
+		}
+	}
+
+	// write course2.csv method
+	public void writeApMathCsv(Student[] inputStudentArray) {
+
+		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course2.csv"))) {
+			fileWriter.write("Student ID, Student Name, Course, Grade\n");
+			for (Student student : inputStudentArray) {
+				if (student == null) {
+					break;
+				} else if ((student.getInfo()).contains("APMTH")) {
+					fileWriter.write(student.getInfo() + "\n");
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("IOException writing course2.csv");
+			e.printStackTrace();
+		}
+	}
+
+	// write course3.csv method
+	public void writeStatCsv(Student[] inputStudentArray) {
+
+		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course3.csv"))) {
+			fileWriter.write("Student ID, Student Name, Course, Grade\n");
+			for (Student student : inputStudentArray) {
+				if (student == null) {
+					break;
+				} else if ((student.getInfo()).contains("STAT")) {
+					fileWriter.write(student.getInfo() + "\n");
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("IOException writing course3.csv");
+			e.printStackTrace();
+		}
+	}
+	
+	//write all 3 csv files
+	public void writeCsvAllStudents(Student[] inputStudentArray) {
+		writeCompSciCsv(inputStudentArray);
+		writeStatCsv(inputStudentArray);
+		writeApMathCsv(inputStudentArray);
+	}
+	
+	
+	
+	
+	
+	
 }

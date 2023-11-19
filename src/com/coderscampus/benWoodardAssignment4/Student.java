@@ -1,4 +1,4 @@
-package benWoodardAssignment4;
+package com.coderscampus.benWoodardAssignment4;
 
 public class Student implements Comparable<Student> {
 

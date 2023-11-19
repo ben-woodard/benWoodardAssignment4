@@ -1,4 +1,4 @@
-package benWoodardAssignment4;
+package com.coderscampus.benWoodardAssignment4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

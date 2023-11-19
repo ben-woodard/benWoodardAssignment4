@@ -15,7 +15,7 @@ public class Student implements Comparable<Student> {
 	}
 
 	public String getInfo() {
-		return  studentId + ", " + studentName + ", " + course + ", " + grade;
+		return studentId + ", " + studentName + ", " + course + ", " + grade;
 	}
 
 	public String getStudentId() {

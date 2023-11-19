@@ -10,5 +10,4 @@ public class Runnable {
 
 		fileService.writeCsvAllStudents(studentObjectArray);
 	}
-
 }

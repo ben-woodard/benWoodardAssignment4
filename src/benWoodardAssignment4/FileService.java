@@ -30,7 +30,7 @@ public class FileService {
 		return studentObjectArray;
 	}
 
-	// Organize Student[] by grade in decsending order via the Student comparable
+	// Organize Student[] by grade in descending order via the Student comparable
 	public Student[] organizeStudentsByGrade(Student[] inputArray) {
 		FileService fileService = new FileService();
 		Student[] studentObjectArray = fileService.readStudentFile("student-master-list.csv");
@@ -51,7 +51,7 @@ public class FileService {
 		return studentObjectArray;
 	}
 
-	// write course1.csv method
+	// write COMPSCI csv method
 	public void writeCompSciCsv(Student[] inputStudentArray) {
 
 		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course1.csv"))) {
@@ -69,7 +69,7 @@ public class FileService {
 		}
 	}
 
-	// write course2.csv method
+	// write APMTH csv method
 	public void writeApMathCsv(Student[] inputStudentArray) {
 
 		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course2.csv"))) {
@@ -87,7 +87,7 @@ public class FileService {
 		}
 	}
 
-	// write course3.csv method
+	// write STAT csv method
 	public void writeStatCsv(Student[] inputStudentArray) {
 
 		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course3.csv"))) {
@@ -111,10 +111,5 @@ public class FileService {
 		writeStatCsv(inputStudentArray);
 		writeApMathCsv(inputStudentArray);
 	}
-	
-	
-	
-	
-	
 	
 }

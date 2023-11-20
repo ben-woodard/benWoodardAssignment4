@@ -31,25 +31,6 @@ public class FileService {
 	}
 
 	// Organize Student[] by grade in descending order via the Student comparable
-	public Student[] organizeStudentsByGrade(Student[] inputArray) {
-		FileService fileService = new FileService();
-		Student[] studentObjectArray = fileService.readStudentFile("student-master-list.csv");
-
-		Arrays.sort(studentObjectArray, new Comparator<Student>() {
-			@Override
-			public int compare(Student student1, Student student2) {
-				if (student1 == null && student2 == null) {
-					return 0;
-				} else if (student1 == null) {
-					return 1;
-				} else if (student2 == null) {
-					return -1;
-				}
-				return student1.compareTo(student2);
-			}
-		});
-		return studentObjectArray;
-	}
 
 	// write COMPSCI csv method
 	public void writeCompSciCsv(Student[] inputStudentArray) {
@@ -104,12 +85,12 @@ public class FileService {
 			e.printStackTrace();
 		}
 	}
-	
-	//write all 3 csv files
+
+	// write all 3 csv files
 	public void writeCsvAllStudents(Student[] inputStudentArray) {
 		writeCompSciCsv(inputStudentArray);
 		writeStatCsv(inputStudentArray);
 		writeApMathCsv(inputStudentArray);
 	}
-	
+
 }

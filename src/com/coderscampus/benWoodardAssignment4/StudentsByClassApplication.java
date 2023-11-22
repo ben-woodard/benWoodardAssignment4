@@ -4,11 +4,11 @@ public class StudentsByClassApplication {
 
 	public static void main(String[] args) {
 		FileService fileService = new FileService();
-		StudentService studentService = new StudentService();
+		StudentService studentService = new StudentService(fileService);
+		StudentCourseReportService reportService = new StudentCourseReportService(studentService, fileService);
 
-		Student[] unorganizedStudentArray = fileService.readStudentFile("student-master-list.csv");
-		Student[] organizedStudentArray = studentService.organizeStudentsByGrade(unorganizedStudentArray);
-
-		fileService.writeCsvAllStudents(organizedStudentArray);
+		reportService.generateStudentCourseReportByCourse("COMPSCI", "course1.csv");
+		reportService.generateStudentCourseReportByCourse("APMTH", "course2.csv");
+		reportService.generateStudentCourseReportByCourse("STAT", "course3.csv");
 	}
 }

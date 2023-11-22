@@ -5,11 +5,17 @@ import java.util.Comparator;
 
 public class StudentService {
 
-	public Student[] organizeStudentsByGrade(Student[] inputArray) {
-		FileService fileService = new FileService();
-		Student[] studentObjectArray = fileService.readStudentFile("student-master-list.csv");
+	private final String FILENAME = "student-master-list.csv";
+	private Student[] students = new Student[100];
 
-		Arrays.sort(studentObjectArray, new Comparator<Student>() {
+	public StudentService(FileService fileService) {
+		students = fileService.readStudentFile(FILENAME);
+		sortStudentsByGrade(students);
+	}
+
+	public void sortStudentsByGrade(Student[] inputArray) {
+
+		Arrays.sort(students, new Comparator<Student>() {
 			@Override
 			public int compare(Student student1, Student student2) {
 				if (student1 == null && student2 == null) {
@@ -22,6 +28,17 @@ public class StudentService {
 				return student1.compareTo(student2);
 			}
 		});
-		return studentObjectArray;
+	}
+
+	public Student[] filterStudentsByCourse(String course) {
+		Student[] courseStudents = new Student[students.length];
+		int studCtr = 0;
+		for (Student student : students) {
+			if (student != null && (student.getInfo()).contains(course)) {
+				courseStudents[studCtr] = student;
+			}
+			studCtr++;
+		}
+		return courseStudents;
 	}
 }

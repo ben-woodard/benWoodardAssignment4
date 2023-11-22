@@ -28,67 +28,19 @@ public class FileService {
 		return studentObjectArray;
 	}
 
-	// Organize Student[] by grade in descending order via the Student comparable
+	// write csv method
+	public void writeStudentCsv(Student[] inputStudentArray, String exportFilename) {
 
-	// write COMPSCI csv method
-	public void writeCompSciCsv(Student[] inputStudentArray) {
-
-		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course1.csv"))) {
+		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(exportFilename))) {
 			fileWriter.write("Student ID, Student Name, Course, Grade\n");
 			for (Student student : inputStudentArray) {
-				if (student == null) {
-					break;
-				} else if ((student.getInfo()).contains("COMPSCI")) {
+				if (student != null) {
 					fileWriter.write(student.getInfo() + "\n");
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("IOException writing course1.csv");
+			System.out.println("IOException writing csv");
 			e.printStackTrace();
 		}
 	}
-
-	// write APMTH csv method
-	public void writeApMathCsv(Student[] inputStudentArray) {
-
-		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course2.csv"))) {
-			fileWriter.write("Student ID, Student Name, Course, Grade\n");
-			for (Student student : inputStudentArray) {
-				if (student == null) {
-					break;
-				} else if ((student.getInfo()).contains("APMTH")) {
-					fileWriter.write(student.getInfo() + "\n");
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("IOException writing course2.csv");
-			e.printStackTrace();
-		}
-	}
-
-	// write STAT csv method
-	public void writeStatCsv(Student[] inputStudentArray) {
-
-		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter("course3.csv"))) {
-			fileWriter.write("Student ID, Student Name, Course, Grade\n");
-			for (Student student : inputStudentArray) {
-				if (student == null) {
-					break;
-				} else if ((student.getInfo()).contains("STAT")) {
-					fileWriter.write(student.getInfo() + "\n");
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("IOException writing course3.csv");
-			e.printStackTrace();
-		}
-	}
-
-	// write all 3 csv files
-	public void writeCsvAllStudents(Student[] inputStudentArray) {
-		writeCompSciCsv(inputStudentArray);
-		writeStatCsv(inputStudentArray);
-		writeApMathCsv(inputStudentArray);
-	}
-
 }
